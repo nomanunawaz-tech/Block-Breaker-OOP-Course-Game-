@@ -154,9 +154,6 @@
   <data name="brown_brick_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\20-Breakout-Tiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BLUEPADDLE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\BLUEPADDLEpng.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="special_paddle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Paddle_A_Blue_192x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -178,13 +175,13 @@
   <data name="yellow_paddle_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\53-Breakout-Tiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Expand_paddle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\47-Breakout-Tiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\58-Breakout-Tiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\star1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

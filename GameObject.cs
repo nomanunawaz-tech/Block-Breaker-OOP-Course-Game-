@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace oop_final_game
 {
-    public  class GameObject
+    public  class GameObject : IDrawable, ICollidable
     {
         public float X { get; set; }
         public float Y { get; set; }

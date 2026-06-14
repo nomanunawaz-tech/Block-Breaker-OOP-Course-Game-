@@ -1,71 +1,48 @@
-﻿using System;
+using System;
 using System.Drawing;
 
 namespace oop_final_game
 {
     public enum PowerUpType
     {
-        WidePaddle,
-        SlowBall,
         ExtraBall,
-        ScoreBoost
+        ExtraLife,
+        ExpandPaddle
     }
 
-    public class PowerUp
+    public class PowerUp : GameObject
     {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public int Width { get; set; } = 25;
-        public int Height { get; set; } = 15;
-        public float SpeedY { get; set; } = 3.5f;
         public PowerUpType Type { get; set; }
+        public float SpeedY { get; set; } = 3.5f;
 
-        public PowerUp(float x, float y, PowerUpType type)
+        public PowerUp(float x, float y, PowerUpType type) 
+            : base(x, y, Color.Transparent, GetImageForType(type))
         {
-            X = x;
-            Y = y;
             Type = type;
+            this.Width = 35; 
+            this.Height = 35;
+        }
+
+        private static Image GetImageForType(PowerUpType type)
+        {
+            switch (type)
+            {
+                case PowerUpType.ExtraBall:
+                    return Resource.ball;
+
+                case PowerUpType.ExpandPaddle:
+                    return Resource.Expand_paddle;
+
+                case PowerUpType.ExtraLife:
+                    return Resource.star1; 
+                default:
+                    return Resource.yellow_brick;
+            }
         }
 
         public void Move()
         {
             Y += SpeedY;
-        }
-
-        public Rectangle GetBounds()
-        {
-            return new Rectangle((int)X, (int)Y, Width, Height);
-        }
-
-        public void Draw(Graphics g)
-        {
-            Brush brush;
-
-            switch (Type)
-            {
-                case PowerUpType.WidePaddle:
-                    brush = Brushes.Cyan;
-                    break;
-                case PowerUpType.SlowBall:
-                    brush = Brushes.LimeGreen;
-                    break;
-                case PowerUpType.ExtraBall:
-                    brush = Brushes.Gold;
-                    break;
-                case PowerUpType.ScoreBoost:
-                    brush = Brushes.Magenta;
-                    break;
-                default:
-                    brush = Brushes.White;
-                    break;
-            }
-
-            g.FillEllipse(brush, X, Y, Width, Height);
-
-            using (Pen borderPen = new Pen(Color.White, 1.5f))
-            {
-                g.DrawEllipse(borderPen, X, Y, Width, Height);
-            }
         }
     }
 }

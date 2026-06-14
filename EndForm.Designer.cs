@@ -26,6 +26,7 @@ namespace oop_final_game
             pnlFooter = new Panel();
             btnExit = new Button();
             btnPlayAgain = new Button();
+            button1 = new Button();
             pnlHeader.SuspendLayout();
             pnlBody.SuspendLayout();
             pnlFooter.SuspendLayout();
@@ -39,7 +40,7 @@ namespace oop_final_game
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(1021, 150);
+            pnlHeader.Size = new Size(1584, 150);
             pnlHeader.TabIndex = 0;
             // 
             // lblResult
@@ -49,7 +50,7 @@ namespace oop_final_game
             lblResult.ForeColor = Color.FromArgb(248, 113, 113);
             lblResult.Location = new Point(0, 94);
             lblResult.Name = "lblResult";
-            lblResult.Size = new Size(1021, 66);
+            lblResult.Size = new Size(1584, 66);
             lblResult.TabIndex = 1;
             lblResult.Text = "GAME OVER";
             lblResult.TextAlign = ContentAlignment.MiddleCenter;
@@ -61,7 +62,7 @@ namespace oop_final_game
             lblIcon.ForeColor = Color.White;
             lblIcon.Location = new Point(0, 0);
             lblIcon.Name = "lblIcon";
-            lblIcon.Size = new Size(1021, 94);
+            lblIcon.Size = new Size(1584, 94);
             lblIcon.TabIndex = 0;
             lblIcon.Text = "💀";
             lblIcon.TextAlign = ContentAlignment.BottomCenter;
@@ -77,7 +78,7 @@ namespace oop_final_game
             pnlBody.Location = new Point(0, 150);
             pnlBody.Name = "pnlBody";
             pnlBody.Padding = new Padding(40, 10, 40, 10);
-            pnlBody.Size = new Size(1021, 445);
+            pnlBody.Size = new Size(1584, 441);
             pnlBody.TabIndex = 1;
             // 
             // pnlDivider
@@ -86,7 +87,7 @@ namespace oop_final_game
             pnlDivider.Dock = DockStyle.Top;
             pnlDivider.Location = new Point(40, 225);
             pnlDivider.Name = "pnlDivider";
-            pnlDivider.Size = new Size(941, 1);
+            pnlDivider.Size = new Size(1504, 1);
             pnlDivider.TabIndex = 3;
             // 
             // lblStars
@@ -96,7 +97,7 @@ namespace oop_final_game
             lblStars.ForeColor = Color.FromArgb(250, 204, 21);
             lblStars.Location = new Point(40, 159);
             lblStars.Name = "lblStars";
-            lblStars.Size = new Size(941, 66);
+            lblStars.Size = new Size(1504, 66);
             lblStars.TabIndex = 2;
             lblStars.Text = "☆☆☆";
             lblStars.TextAlign = ContentAlignment.MiddleCenter;
@@ -108,7 +109,7 @@ namespace oop_final_game
             lblScore.ForeColor = Color.White;
             lblScore.Location = new Point(40, 60);
             lblScore.Name = "lblScore";
-            lblScore.Size = new Size(941, 99);
+            lblScore.Size = new Size(1504, 99);
             lblScore.TabIndex = 1;
             lblScore.Text = "0";
             lblScore.TextAlign = ContentAlignment.MiddleCenter;
@@ -120,7 +121,7 @@ namespace oop_final_game
             lblScoreTitle.ForeColor = Color.FromArgb(150, 150, 190);
             lblScoreTitle.Location = new Point(40, 10);
             lblScoreTitle.Name = "lblScoreTitle";
-            lblScoreTitle.Size = new Size(941, 50);
+            lblScoreTitle.Size = new Size(1504, 50);
             lblScoreTitle.TabIndex = 0;
             lblScoreTitle.Text = "FINAL SCORE";
             lblScoreTitle.TextAlign = ContentAlignment.BottomCenter;
@@ -128,13 +129,14 @@ namespace oop_final_game
             // pnlFooter
             // 
             pnlFooter.BackColor = Color.FromArgb(18, 18, 30);
+            pnlFooter.Controls.Add(button1);
             pnlFooter.Controls.Add(btnExit);
             pnlFooter.Controls.Add(btnPlayAgain);
             pnlFooter.Dock = DockStyle.Bottom;
-            pnlFooter.Location = new Point(0, 595);
+            pnlFooter.Location = new Point(0, 591);
             pnlFooter.Name = "pnlFooter";
             pnlFooter.Padding = new Padding(40, 16, 40, 16);
-            pnlFooter.Size = new Size(1021, 88);
+            pnlFooter.Size = new Size(1584, 92);
             pnlFooter.TabIndex = 2;
             // 
             // btnExit
@@ -146,7 +148,7 @@ namespace oop_final_game
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 12F);
             btnExit.ForeColor = Color.FromArgb(180, 180, 210);
-            btnExit.Location = new Point(1091, 16);
+            btnExit.Location = new Point(1654, 16);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(130, 52);
             btnExit.TabIndex = 1;
@@ -162,7 +164,7 @@ namespace oop_final_game
             btnPlayAgain.FlatStyle = FlatStyle.Flat;
             btnPlayAgain.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnPlayAgain.ForeColor = Color.White;
-            btnPlayAgain.Location = new Point(40, 16);
+            btnPlayAgain.Location = new Point(98, 19);
             btnPlayAgain.Name = "btnPlayAgain";
             btnPlayAgain.Size = new Size(210, 52);
             btnPlayAgain.TabIndex = 0;
@@ -170,12 +172,28 @@ namespace oop_final_game
             btnPlayAgain.UseVisualStyleBackColor = false;
             btnPlayAgain.Click += btnPlayAgain_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(192, 0, 0);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(1000, 28);
+            button1.Name = "button1";
+            button1.Size = new Size(210, 52);
+            button1.TabIndex = 4;
+            button1.Text = "❌ Exit Game";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // EndForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 28, 42);
-            ClientSize = new Size(1021, 683);
+            ClientSize = new Size(1584, 683);
             Controls.Add(pnlBody);
             Controls.Add(pnlFooter);
             Controls.Add(pnlHeader);
@@ -204,5 +222,6 @@ namespace oop_final_game
         private System.Windows.Forms.Panel pnlFooter;
         private System.Windows.Forms.Button btnPlayAgain;
         private System.Windows.Forms.Button btnExit;
+        private Button button1;
     }
 }

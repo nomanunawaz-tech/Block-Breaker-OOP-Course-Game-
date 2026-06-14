@@ -10,26 +10,26 @@ namespace oop_final_game
 {
     internal class Game
     {
-        public bool isOver = false;
-        public bool isGameLost = false;
-        public int screenWidth;
-        public int screenHeight;
-        public int timmer = 1000;
+        public bool isOver { get; set; } = false;
+        public bool isGameLost { get; set; } = false;
+        public int screenWidth { get; set; }
+        public int screenHeight { get; set; }
+        public int timmer { get; set; } = 1000;
 
-        private int totalBalls = 3;
-        private List<Ball> scoreBalls = new List<Ball>();
-        public int scores;
+        private int totalBalls { get; set; } = 3;
+        private List<Ball> scoreBalls { get; set; } = new List<Ball>();
+        public int scores { get; set; }
 
-        private List<Brick> bricks = new List<Brick>();
-        private List<PowerUp> powerUps = new List<PowerUp>();
+        private List<Brick> bricks { get; set; } = new List<Brick>();
+        private List<PowerUp> powerUps { get; set; } = new List<PowerUp>();
         private Paddle paddle;
         List<Ball> balls;
-        //GameObject star;
+        public int expandPaddleTimer { get; set; } = 0;
 
         public Game(int screenWidth, int screenHeight)
         {
             SoundManager.Initialize();
-            scores=0;
+            scores = 0;
             this.screenWidth = screenWidth;
             this.screenHeight = screenHeight;
             paddle = new Paddle(screenWidth / 2 - Paddle.WIDTH / 2, screenHeight - 50, screenWidth, screenHeight);
@@ -37,7 +37,6 @@ namespace oop_final_game
             balls = new List<Ball>();
             addPaddleBall();
             addScoreBalls();
-            //addBricks(50);
 
             
         }
@@ -68,8 +67,18 @@ namespace oop_final_game
             checkKeyPressed();  
             checkBricksCollision();
             checkCollisionWithPaddle();
+            checkPowerUpsCollision();
             clearLists();
             timmer -= 1;
+
+            if (expandPaddleTimer > 0)
+            {
+                expandPaddleTimer--;
+                if (expandPaddleTimer <= 0)
+                {
+                    paddle.Width = Paddle.WIDTH;
+                }
+            }
 
             if (bricks.Count <= 0 || timmer < 0)
             {
@@ -200,11 +209,6 @@ namespace oop_final_game
                             PowerUpType randomType = (PowerUpType)ran.Next(0, Enum.GetValues(typeof(PowerUpType)).Length);
                             powerUps.Add(new PowerUp(brick.X, brick.Y, randomType));
                             SoundManager.PlayPaddleHit();
-
-                            Ball newBall = new Ball(brick.X, brick.Y, brick.color);
-                            newBall.speY = -newBall.speY;
-                            newBall.isStuck = false;
-                            ballsToAdd.Add(newBall);
                         }
                         else
                         {
@@ -219,6 +223,55 @@ namespace oop_final_game
             if (ballsToAdd.Count > 0)
             {
                 balls.AddRange(ballsToAdd);
+            }
+        }
+
+        void checkPowerUpsCollision()
+        {
+            for (int i = powerUps.Count - 1; i >= 0; i--)
+            {
+                PowerUp p = powerUps[i];
+                p.Move();
+
+                if (p.Y > screenHeight)
+                {
+                    powerUps.RemoveAt(i);
+                    continue;
+                }
+
+                if (p.GetBounds().IntersectsWith(paddle.GetBounds()))
+                {
+                    ApplyPowerUp(p.Type);
+                    powerUps.RemoveAt(i);
+                    SoundManager.PlayPaddleHit();
+                }
+            }
+        }
+
+        void ApplyPowerUp(PowerUpType type)
+        {
+            switch (type)
+            {
+                case PowerUpType.ExpandPaddle:
+                    if (expandPaddleTimer <= 0)
+                        paddle.Width = Math.Min(paddle.Width + 50, screenWidth);
+                    expandPaddleTimer = 300; // Lasts for approx 5-10 seconds
+                    break;
+                case PowerUpType.ExtraLife:
+                    totalBalls++;
+                    scoreBalls.Clear();
+                    addScoreBalls();
+                    break;
+                case PowerUpType.ExtraBall:
+                    if (balls.Count > 0)
+                    {
+                        Ball newBall = new Ball(paddle.X + paddle.Width / 2 - 12.5f, paddle.Y - 25, System.Drawing.Color.White);
+                        newBall.speX = 5f;
+                        newBall.speY = -7f;
+                        newBall.isStuck = false;
+                        balls.Add(newBall);
+                    }
+                    break;
             }
         }
 
@@ -271,9 +324,8 @@ namespace oop_final_game
                 scoreBall.Draw(g);
             }
             foreach(PowerUp p in powerUps)
-                {
+            {
                 p.Draw(g);
-                p.Move();
             }
             using (Font scoreFont = new Font("Arial", 16, FontStyle.Bold))
             {
